@@ -8,16 +8,20 @@ var microgear = MicroGear.create({
     gearkey : KEY,
     gearsecret : SECRET
 });
- 
+
+
 microgear.on('connected', function() {
     console.log('Connected...');
     microgear.setname("Count");
-    /*setInterval(function() {
-        microgear.chat('mygear', 'Hello world.');
-    },1000);*/
+    microgear.setAlias("app");
+    microgear.subscribe('/thanapon1195/gearname/mygear');
+    setInterval(function() {
+        microgear.publish('/thanapon1195/gearname/mygear', 'Hello world.');
+    },1000);
 });
  
 microgear.on('message', function(topic,body) {
+    
     console.log('incoming : '+topic+' : '+body);
 });
  
