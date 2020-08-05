@@ -57,7 +57,35 @@ function reply(reply_token) {
     });
     microgear.publish('/thanapon1195/gearname/mygear', reply_token);
 }
+function notic(body) {
+    let headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer {XbZT8OPxuekGYmEqqn8fCw1Fd9Q0MDezGsa2XkGoxrahQMBnNU8oSNDZKRZTMuZGOCaugwTZQP6kqhGVCHsCtaIFSuTrV3vjxjWf9zOtJqgXHCz4RS6r1NykSjhfBpatmp2gQ5bHKkmeIeXkOziA5wdB04t89/1O/w1cDnyilFU=}'
+    }
+    let body = JSON.stringify({
+        replyToken: 'da7b5ec8d20d4c269ea51d1f4e051531',
+        messages: [{
+            type: 'text',
+            text: 'Hello'
+        },
+        {
+            type: 'text',
+            text: body
+        }]
+    })
+    request.post({
+        url: 'https://api.line.me/v2/bot/message/push',
+        headers: headers,
+        body: body
+    }, (err, res, body) => {
+        console.log('status = ' + res.statusCode);
+    });
+    //microgear.publish('/thanapon1195/gearname/mygear', reply_token);
+}
+
 microgear.on('message', function(topic,body) { 
+    notic(body)
+    res.sendStatus(200)
     console.log('incoming : '+topic+' : '+body);
 });
 microgear.on('closed', function() {
