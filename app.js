@@ -45,7 +45,7 @@ function reply(reply_token) {
         },
         {
             type: 'text',
-            text: 'How are you?'
+            text: 'How are you???????????'
         }]
     })
     request.post({
