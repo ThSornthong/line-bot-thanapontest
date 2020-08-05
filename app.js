@@ -57,7 +57,7 @@ function reply(reply_token) {
     });
     microgear.publish('/thanapon1195/gearname/mygear', reply_token);
 }
-function notic(body) {
+function notic(bodys) {
     let headers = {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer {XbZT8OPxuekGYmEqqn8fCw1Fd9Q0MDezGsa2XkGoxrahQMBnNU8oSNDZKRZTMuZGOCaugwTZQP6kqhGVCHsCtaIFSuTrV3vjxjWf9zOtJqgXHCz4RS6r1NykSjhfBpatmp2gQ5bHKkmeIeXkOziA5wdB04t89/1O/w1cDnyilFU=}'
@@ -70,7 +70,7 @@ function notic(body) {
         },
         {
             type: 'text',
-            text: body
+            text: bodys
         }]
     })
     request.post({
