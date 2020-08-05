@@ -16,6 +16,7 @@ microgear.on('connected', function() {
     microgear.subscribe('/thanapon1195/gearname/mygear');
 });
 
+microgear.connect(APPID);
 
 // Reply with two static messages
 
@@ -29,7 +30,6 @@ app.use(bodyParser.json())
 app.post('/webhook', (req, res) => {
     let reply_token = req.body.events[0].replyToken
     reply(reply_token)
-    notic(body)
     res.sendStatus(200)
 })
 app.listen(port)
@@ -46,11 +46,11 @@ function reply(reply_token) {
         },
         {
             type: 'text',
-            text: 'How are you???????????5'
+            text: 'How are you???????????7'
         }]
     })
     request.post({
-        url: 'https://api.line.me/v2/bot/message/reply',
+        url: 'https://api.line.me/v2/bot/message/push',
         headers: headers,
         body: body
     }, (err, res, body) => {
@@ -75,7 +75,7 @@ function notic(bodys) {
         }]
     })
     request.post({
-        url: 'https://api.line.me/v2/bot/message/push',
+        url: 'https://api.line.me/v2/bot/message/reply',
         headers: headers,
         body: body
     }, (err, res, body) => {
@@ -89,10 +89,10 @@ function notic(bodys) {
 }
 
 microgear.on('message', function(topic,body) { 
-    notic(body)
+    reply('da7b5ec8d20d4c269ea51d1f4e051531')
+    res.sendStatus(200)
     console.log('incoming : '+topic+' : '+body);
 });
 microgear.on('closed', function() {
     console.log('Closed...');
 });
-microgear.connect(APPID);
