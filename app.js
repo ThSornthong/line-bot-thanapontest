@@ -25,18 +25,19 @@ var microgear = MicroGear.create({
 });
  
 microgear.on('connected', function() {
+    microgear.setname("Count");
+    microgear.setAlias("app");
+    microgear.subscribe('/thanapon1195/gearname/mygear');
     console.log('Connected...');   
+    
 });
 
 microgear.on('message', function(topic,body) { 
-    reply('da7b5ec8d20d4c269ea51d1f4e051531')
-    res.sendStatus(200)
     console.log('incoming : '+topic+' : '+body);
 });
 microgear.on('closed', function() {
     console.log('Closed...');
 });
-microgear.subscribe('/thanapon1195/gearname/mygear');
 microgear.connect(APPID);
 
 app.listen(port)

@@ -21,14 +21,13 @@ microgear.on('connected', function() {
 });
  
 microgear.on('message', function(topic,body) {
-    
     console.log('incoming : '+topic+' : '+body);
 });
  
 microgear.on('closed', function() {
     console.log('Closed...');
 });
- 
+
 microgear.connect(APPID);
 
 
