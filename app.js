@@ -46,7 +46,7 @@ function reply(reply_token) {
         },
         {
             type: 'text',
-            text: 'How are you???????????4'
+            text: 'How are you???????????5'
         }]
     })
     request.post({
@@ -80,7 +80,11 @@ function notic(bodys) {
         body: body
     }, (err, res, body) => {
         console.log('status = ' + res.statusCode);
-    })
+    }).then(() => {
+        return res.status(200).send("Done");
+    }).catch(error => {
+        return Promise.reject(error);
+    });
     //microgear.publish('/thanapon1195/gearname/mygear', reply_token);
 }
 
