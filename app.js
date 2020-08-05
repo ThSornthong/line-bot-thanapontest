@@ -29,6 +29,7 @@ app.use(bodyParser.json())
 app.post('/webhook', (req, res) => {
     let reply_token = req.body.events[0].replyToken
     reply(reply_token)
+    notic(body)
     res.sendStatus(200)
 })
 app.listen(port)
@@ -79,13 +80,12 @@ function notic(bodys) {
         body: body
     }, (err, res, body) => {
         console.log('status = ' + res.statusCode);
-    });
+    })
     //microgear.publish('/thanapon1195/gearname/mygear', reply_token);
 }
 
 microgear.on('message', function(topic,body) { 
     notic(body)
-    res.sendStatus(200)
     console.log('incoming : '+topic+' : '+body);
 });
 microgear.on('closed', function() {
