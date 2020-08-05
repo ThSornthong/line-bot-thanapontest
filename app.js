@@ -4,18 +4,6 @@ var MicroGear = require('microgear')
 const KEY = 'kY0IZ25NRM75uZx'
 const SECRET = 'pdfg4bYwxl8VUy341YgRzxDzl'
 const APPID = 'thanapon1195'
-var microgear = MicroGear.create({
-    gearkey : KEY,
-    gearsecret : SECRET
-});
- 
-microgear.on('connected', function() {
-    console.log('Connected...');
-    microgear.subscribe('/thanapon1195/gearname/mygear');
-});
-
-microgear.connect(APPID);
-
 // Reply with two static messages
 
 const express = require('express')
@@ -30,6 +18,27 @@ app.post('/webhook', (req, res) => {
     reply(reply_token)
     res.sendStatus(200)
 })
+
+var microgear = MicroGear.create({
+    gearkey : KEY,
+    gearsecret : SECRET
+});
+ 
+microgear.on('connected', function() {
+    console.log('Connected...');   
+});
+
+microgear.on('message', function(topic,body) { 
+    reply('da7b5ec8d20d4c269ea51d1f4e051531')
+    res.sendStatus(200)
+    console.log('incoming : '+topic+' : '+body);
+});
+microgear.on('closed', function() {
+    console.log('Closed...');
+});
+microgear.subscribe('/thanapon1195/gearname/mygear');
+microgear.connect(APPID);
+
 app.listen(port)
 function reply(reply_token) {
     let headers = {
@@ -56,41 +65,5 @@ function reply(reply_token) {
     });
     microgear.publish('/thanapon1195/gearname/mygear', reply_token);
 }
-function notic(bodys) {
-    let headers = {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer {XbZT8OPxuekGYmEqqn8fCw1Fd9Q0MDezGsa2XkGoxrahQMBnNU8oSNDZKRZTMuZGOCaugwTZQP6kqhGVCHsCtaIFSuTrV3vjxjWf9zOtJqgXHCz4RS6r1NykSjhfBpatmp2gQ5bHKkmeIeXkOziA5wdB04t89/1O/w1cDnyilFU=}'
-    }
-    let body = JSON.stringify({
-        replyToken: 'da7b5ec8d20d4c269ea51d1f4e051531',
-        messages: [{
-            type: 'text',
-            text: 'Hello'
-        },
-        {
-            type: 'text',
-            text: bodys
-        }]
-    })
-    request.post({
-        url: 'https://api.line.me/v2/bot/message/reply',
-        headers: headers,
-        body: body
-    }, (err, res, body) => {
-        console.log('status = ' + res.statusCode);
-    }).then(() => {
-        return res.status(200).send("Done");
-    }).catch(error => {
-        return Promise.reject(error);
-    });
-    //microgear.publish('/thanapon1195/gearname/mygear', reply_token);
-}
 
-microgear.on('message', function(topic,body) { 
-    reply('da7b5ec8d20d4c269ea51d1f4e051531')
-    res.sendStatus(200)
-    console.log('incoming : '+topic+' : '+body);
-});
-microgear.on('closed', function() {
-    console.log('Closed...');
-});
+
