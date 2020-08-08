@@ -1,9 +1,5 @@
 //NETPIE
-var MicroGear = require('microgear')
 
-const KEY = 'kY0IZ25NRM75uZx'
-const SECRET = 'pdfg4bYwxl8VUy341YgRzxDzl'
-const APPID = 'thanapon1195'
 // Reply with two static messages
 
 const express = require('express')
@@ -18,28 +14,6 @@ app.post('/webhook', (req, res) => {
     reply(reply_token)
     res.sendStatus(200)
 })
-
-var microgear = MicroGear.create({
-    gearkey : KEY,
-    gearsecret : SECRET
-});
- 
-microgear.on('connected', function() {
-    microgear.setname("Count");
-    microgear.setAlias("app");
-    microgear.subscribe('/thanapon1195/gearname/mygear');
-    console.log('Connected...');   
-    
-});
-
-microgear.on('message', function(topic,body) { 
-    console.log('incoming : '+topic+' : '+body);
-});
-microgear.on('closed', function() {
-    console.log('Closed...');
-});
-microgear.connect(APPID);
-
 app.listen(port)
 function reply(reply_token) {
     let headers = {
@@ -64,7 +38,7 @@ function reply(reply_token) {
     }, (err, res, body) => {
         console.log('status = ' + res.statusCode);
     });
-    microgear.publish('/thanapon1195/gearname/mygear', reply_token);
+    
 }
 
 
