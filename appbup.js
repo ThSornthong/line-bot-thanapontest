@@ -12,7 +12,7 @@ var microgear = MicroGear.create({
 microgear.on('connected', function() {
     console.log('Connected...');
     microgear.setname("APP");
-    microgear.subscribe('/thanapon1195/gearname/mygear');
+    microgear.subscribe('/thanapon1195/gearname/Count');
 });
 microgear.on('message', function(topic,body) {
     console.log('incoming : '+topic+' : '+body);
