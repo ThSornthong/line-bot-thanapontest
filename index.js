@@ -11,7 +11,7 @@ var microgear = MicroGear.create({
 
 
 microgear.on('connected', function() {
-    console.log('Connected...');
+    console.log('Connected gear');
     microgear.setname("Count");
     microgear.setAlias("app");
     microgear.subscribe('/thanapon1195/gearname/mygear');
