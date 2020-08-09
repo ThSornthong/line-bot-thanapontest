@@ -30,7 +30,7 @@ app.post('/webhook', (req, res) => {
     let reply_token = req.body.events[0].replyToken
     reply(reply_token)
     res.sendStatus(200)
-    console.log(req.body.events[0].source[0]);
+    console.log(req.body.events[0].source);
 })
 app.listen(port)
 function reply(reply_token) {
