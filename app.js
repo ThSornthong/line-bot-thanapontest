@@ -14,7 +14,7 @@ function notic(){
         uri: `${LINE_MESSAGING_API}/push`,
         headers: LINE_HEADER,
         body: JSON.stringify({
-          to: 'da7b5ec8d20d4c269ea51d1f4e051531',
+          to: '8a0f36a86e814ea08c23a78872ea8014',
           messages: [{
               type: "text",
               text: "LINE \uDBC0\uDC84 x \uDBC0\uDCA4 Firebase"
