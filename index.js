@@ -1,19 +1,20 @@
 var MicroGear = require('microgear')
 
-const KEY = 'kY0IZ25NRM75uZx'
-const SECRET = 'pdfg4bYwxl8VUy341YgRzxDzl'
+const KEY = 'uQHkfL7uxfYm9hv'
+const SECRET = '4pP0RdTeIajLI38FaubzfTc7z'
 const APPID = 'thanapon1195'
 
 var microgear = MicroGear.create({
     gearkey : KEY,
-    gearsecret : SECRET
+    gearsecret : SECRET,
+    alias:'app'
 });
 
 
 microgear.on('connected', function() {
     console.log('Connected gear');
-    microgear.setname("Count");
-    microgear.subscribe('/gearname/mygear');
+    microgear.setname("app");
+    microgear.subscribe('/gearname/Count');
     setInterval(function() {
         microgear.publish('/gearname/mygear', 'Hello world.');
     },1000);

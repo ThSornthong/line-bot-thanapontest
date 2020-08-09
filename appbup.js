@@ -1,18 +1,19 @@
 //NETPIE
 var MicroGear = require('microgear')
 
-const KEY = 'kY0IZ25NRM75uZx'
-const SECRET = 'pdfg4bYwxl8VUy341YgRzxDzl'
+const KEY = 'uQHkfL7uxfYm9hv'
+const SECRET = '4pP0RdTeIajLI38FaubzfTc7z'
 const APPID = 'thanapon1195'
 var microgear = MicroGear.create({
     gearkey : KEY,
-    gearsecret : SECRET
+    gearsecret : SECRET,
+    alias:'app2'
 });
  
 microgear.on('connected', function() {
     console.log('Connected...');
-    microgear.setname("APP");
-    microgear.subscribe('/thanapon1195/gearname/Count');
+    microgear.setname("APP2");
+    microgear.subscribe('/gearname/mygear');
 });
 microgear.on('message', function(topic,body) {
     console.log('incoming : '+topic+' : '+body);
