@@ -13,9 +13,9 @@ var microgear = MicroGear.create({
 microgear.on('connected', function() {
     console.log('Connected gear');
     microgear.setname("Count");
-    microgear.subscribe('/thanapon1195/gearname/mygear');
+    microgear.subscribe('/gearname/mygear');
     setInterval(function() {
-        microgear.publish('/thanapon1195/gearname/mygear', 'Hello world.');
+        microgear.publish('/gearname/mygear', 'Hello world.');
     },1000);
 });
  
