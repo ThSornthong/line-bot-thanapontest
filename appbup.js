@@ -1,5 +1,5 @@
 //NETPIE
-var MicroGear = require('microgear')
+/*var MicroGear = require('microgear')
 
 const KEY = 'kY0IZ25NRM75uZx'
 const SECRET = 'pdfg4bYwxl8VUy341YgRzxDzl'
@@ -15,7 +15,7 @@ microgear.on('connected', function() {
 });
 
 microgear.connect(APPID);
-
+*/
 
 // Reply with two static messages
 
