@@ -1,5 +1,5 @@
 //NETPIE
-var MicroGear = require('microgear')
+/*var MicroGear = require('microgear')
 
 const KEY = 'kY0IZ25NRM75uZx'
 const SECRET = 'pdfg4bYwxl8VUy341YgRzxDzl'
@@ -15,6 +15,7 @@ microgear.on('connected', function() {
 });
 
 microgear.connect(APPID);
+*/
 
 // Reply with two static messages
 
@@ -53,10 +54,11 @@ function reply(reply_token) {
         body: body
     }, (err, res, body) => {
         console.log('status = ' + res.statusCode);
+        console.log(reply_token);
     });
-    microgear.publish('/thanapon1195/gearname/mygear', reply_token);
+    //microgear.publish('/thanapon1195/gearname/mygear', reply_token);
 }
-function notic(bodys) {
+/*function notic(bodys) {
     let headers = {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer {XbZT8OPxuekGYmEqqn8fCw1Fd9Q0MDezGsa2XkGoxrahQMBnNU8oSNDZKRZTMuZGOCaugwTZQP6kqhGVCHsCtaIFSuTrV3vjxjWf9zOtJqgXHCz4RS6r1NykSjhfBpatmp2gQ5bHKkmeIeXkOziA5wdB04t89/1O/w1cDnyilFU=}'
@@ -94,3 +96,4 @@ microgear.on('message', function(topic,body) {
 microgear.on('closed', function() {
     console.log('Closed...');
 });
+*/
