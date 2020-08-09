@@ -13,6 +13,13 @@ microgear.on('connected', function() {
     console.log('Connected...');
     microgear.subscribe('/thanapon1195/gearname/mygear');
 });
+microgear.on('message', function(topic,body) {
+    console.log('incoming : '+topic+' : '+body);
+});
+ 
+microgear.on('closed', function() {
+    console.log('Closed...');
+});
 
 microgear.connect(APPID);
 
