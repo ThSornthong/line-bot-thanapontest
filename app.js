@@ -17,9 +17,18 @@ microgear.on('connected', function() {
     console.log('Connected...');
     microgear.setname("APP");
     microgear.subscribe('/gearname/Count');
+    microgear.subscribe('/gearname/mygear');
 });
 microgear.on('message', function(topic,body) {
-    console.log('incoming : '+topic+' : '+body);
+    //console.log('incoming : '+topic+' : '+body);
+    if (topic == '/thanapon1195/gearname/Count') {
+      person = Number(body)
+    }
+    if(topic == '/thanapon1195/gearname/mygear'){
+      electStatus = body
+      if(body == 'on')
+        sendStatus = false
+    }
 });
  
 microgear.on('closed', function() {
@@ -27,9 +36,20 @@ microgear.on('closed', function() {
 });
 
 microgear.connect(APPID);
+//end
 
-cron.schedule('*/5 * * * *', () => {
+var person = 0
+var electStatus = ""
+var sendStatus = false
+
+cron.schedule('*/5 * * * * *', () => {
   console.log('running a task every minute');
+  console.log(person, electStatus.toString());
+  if(person == 0 && electStatus == 'on' && sendStatus == false){    
+    notic()
+    sendStatus = true
+  }
+  
 });
 
 

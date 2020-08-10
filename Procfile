@@ -1,1 +1,1 @@
-web: node appbup.js
+web: node app.js

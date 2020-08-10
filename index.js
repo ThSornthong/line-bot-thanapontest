@@ -14,10 +14,8 @@ var microgear = MicroGear.create({
 microgear.on('connected', function() {
     console.log('Connected gear');
     microgear.setname("app");
-    microgear.subscribe('/gearname/Count');
-    setInterval(function() {
-        microgear.publish('/gearname/mygear', 'Hello world.');
-    },1000);
+    microgear.subscribe('/gearname/mygear');
+    
 });
  
 microgear.on('message', function(topic,body) {
@@ -30,4 +28,10 @@ microgear.on('closed', function() {
 
 microgear.connect(APPID);
 
+function send() {
+    
+        microgear.publish('/gearname/mygear', 'on');
+    
+}
 
+send()
