@@ -42,7 +42,7 @@ var person = 0
 var electStatus = ""
 var sendStatus = false
 
-cron.schedule('*/5 * * * * *', () => {
+cron.schedule('* */5 * * * *', () => {
   console.log('running a task every minute');
   console.log(person, electStatus.toString());
   if(person == 0 && electStatus == 'on' && sendStatus == false){    
