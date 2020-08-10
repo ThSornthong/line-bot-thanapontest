@@ -29,9 +29,9 @@ microgear.on('closed', function() {
 microgear.connect(APPID);
 
 function send() {
-    
-        microgear.publish('/gearname/mygear', 'on');
-    
+    setInterval(function() {
+        microgear.publish('/gearname/mygear', 'off');
+    },1000);
 }
 
 send()
