@@ -7,7 +7,7 @@ const APPID = 'thanapon1195'
 var microgear = MicroGear.create({
     gearkey : KEY,
     gearsecret : SECRET,
-    alias:'app'
+    alias:'app2'
 });
 
 
