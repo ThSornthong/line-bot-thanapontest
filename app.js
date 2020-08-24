@@ -72,7 +72,7 @@ function notic(){
           to: 'Ub9e1f324caf9d622f16e7e8623f70158',
           messages: [{
               type: "text",
-              text: "LINE \uDBC0\uDC84 x \uDBC0\uDCA4 Firebase"
+              text: "LINE test"
           }]
         })
       },(err, httpResponse, body) => {
